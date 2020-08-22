@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Catalog to Scribe Parser</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+	<div class="row">
+	    <div class="col"></div>
+	    <div class="col-12">
+		<h1>Scribe Parser/Differ</h1>
+		<form action="/concdiff" method="post">
+		    <div class="row"> <div class="col-6">
+			<label for="label-A">Label for Course List A</label>
+			<input type="text" name="label_a"></br></br>
+			{% if label_a is defined %}<h2>{{ label_a }}</h2>{% endif %}
+			<textarea name="pasted_A" rows="15" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;width: 100%;">{% if pasted_A is defined %}{{ pasted_A }}{% endif %}</textarea><br>
+		    </div>
+		    <div class="col-6">
+			<label for="label-B">Label for Course List B</label>
+			<input type="text" name="label_b"></br></br>
+			{% if label_b is defined %}<h2>{{ label_b }}</h2>{% endif %}
+			<textarea name="pasted_B" rows="15" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;width: 100%;">{% if pasted_B is defined %}{{ pasted_B }}{% endif %}</textarea><br>
+		    </div></div>
+		    <button type="submit" value="display" name="operation">Display</button>
+		</form>
+		{% if a_b is defined and b_a is defined %}
+		<div class="row">
+		<div class="col-6">
+		  <h2>In {{ label_a }} but Not {{ label_b }}</h2>
+		  <div style="overflow: auto;">
+		    <pre>{{ a_b }}</pre>
+		  </div>
+		</div>
+		<div class="col-6">
+		    <h2>In {{ label_b }} but Not {{ label_a }}</h2>
+		    <div style="overflow: auto;">
+			<pre>{{ b_a }}</pre>
+		    </div>
+		</div>
+		</div>
+		<div class="row">
+		    <div class="col-10">
+			<h2> Common to Both {{ label_a }} and {{ label_b }} </h2>
+			<pre>{{ a_int_b }}</pre>
+		    </div>
+		</div>
+		{% endif %}
+	    </div>
+	    <div class="col"></div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
