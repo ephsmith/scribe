@@ -1,6 +1,6 @@
 #/etc/systemd/system/scribe.service
 [Unit]
-Description=Gunicorn instance to serve myproject
+Description=Gunicorn instance to serve scribe apps
 After=network.target
 
 [Service]
