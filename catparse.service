@@ -1,0 +1,14 @@
+#/etc/systemd/system/scribe.service
+[Unit]
+Description=Gunicorn instance to serve myproject
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/scribeapps
+Environment="PATH=/home/ubuntu/scribeapps/bin"
+ExecStart=/home/ubuntu/scribeapps/bin/gunicorn --workers 3 --bind unix:scribe.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
