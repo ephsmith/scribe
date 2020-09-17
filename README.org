@@ -1,0 +1,9 @@
+* Scribe
+This is a simple web app collection consisting of two tools that simplify workflows for those working with academic catalogs and Ellucian Scribe.
+
+There are two primary tools:
+
+1. catparse: a tool to convert a course list into scribe class rules
+2. concdiff: a tool to assist with determining core and concentration courses from two course lists--utilizing set operations.
+
+Both tools are simple, minimalist flask applications.
