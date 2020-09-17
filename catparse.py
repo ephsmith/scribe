@@ -48,7 +48,7 @@ FSED 2100 Anatomy for Funeral Service"""
 def catparse(text):
     """
     parses a plain text list of courses (as copied from
-    catalog.southwest and returns a list of courses in scribe format.
+    catalog.southwest and returns a list of course dicts in scribe format.
     """
     lst_out = []
     in_or = False
@@ -99,6 +99,7 @@ def catstring(lst):
           '  label {n} "{title}"\n'
     n = 0
     out = ''
+    lst = sorted(lst, key=lambda x: ''.join([x['subject'], x['number']]))
     for course in lst:
         logging.debug(f'catstring: n={n},\n\tcourse={course}')
         if isinstance(course, dict):
@@ -171,7 +172,7 @@ def diff_course_lists(txt_a, txt_b):
     a_b = set_a - set_b
     b_a = set_b - set_a
 
-    return lst_a, lst_b, set_lst(a_int_b, lst_a) + set_lst(a_int_b, lst_b),\
+    return lst_a, lst_b, set_lst(a_int_b, lst_a),\
         set_lst(a_b, lst_a), set_lst(b_a, lst_b)
 
 
